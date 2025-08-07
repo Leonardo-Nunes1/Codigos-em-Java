@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Teste {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int candidatos, opcao, confirmar = 2;
+
+        System.out.println("Bem vindo a Urna Virtual Digital!");
+        System.out.println("Selecione (1) para ver os candidatos ou (2) para encerrar o programa.");
+        opcao = scanner.nextInt();
+
+        switch (opcao) {
+            case 1:
+                do {
+                    System.out.println("Candidatos para a Votação:");
+                    System.out.println("1 - Leonardo Nunes Lima");
+                    System.out.println("2 - Matheus Nunes Lima");
+                    System.out.println("3 - Lucas Nunes Lima");
+
+                    System.out.println("Escolha o seu candidato: ");
+                    candidatos = scanner.nextInt();
+
+                    System.out.printf("Candidato escolhido foi o %d, confirma seu voto? (1 - Sim / 2 - Não) ", candidatos);
+                    confirmar = scanner.nextInt();
+
+                    if (confirmar == 2) {
+                        System.out.println("Voto não confirmado. Por favor, vote novamente.");
+                    }
+                } while (confirmar == 2);
+
+                System.out.println("Voto confirmado.");
+                break;
+
+            case 2:
+                System.out.println("Programa encerrado com sucesso.");
+                break;
+
+            default:
+                System.out.println("Opção inválida.");
+                break;
+        }
+    }
+}

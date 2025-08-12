@@ -1,0 +1,61 @@
+package maquinadecartao;
+
+import java.util.Scanner;
+
+public class MaquinaDeCartao {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int credito, debito, opcao, confirmar;
+        int SenhaInserida, SenhaValida = 1234;
+        double ValorLiquido, desconto, ValorFinal;
+
+        System.out.println("Simulação de Maquina de Cartão");
+        System.out.println("Compras acima de R$100,00 terão desconto de 5% no valor total.");
+
+        System.out.println("Digite o preço do produto: ");
+        ValorLiquido = scanner.nextDouble();
+
+        if (ValorLiquido > 100){
+
+            desconto = ValorLiquido * 0.05;
+            ValorFinal = ValorLiquido - desconto;
+            System.out.println("Desconto aplicado! Ficou no total de: R$ " + ValorFinal);
+
+        } else {
+            ValorFinal = ValorLiquido;
+            System.out.println("Compra abaixo de R$100,00. Sem desconto aplicado.");
+            System.out.println("Ficou no total de: R$ " + ValorFinal);
+        }
+
+
+        System.out.println("Escolha a Forma de Pagamento Desejado -> (1 - Débito, 2 - Crédito) ");
+        opcao = scanner.nextInt();
+
+        switch (opcao){
+
+            case 1:
+                System.out.println("Forma de pagamento selecionada: Débito.");
+                System.out.print("Insira sua senha: ");
+                SenhaInserida = scanner.nextInt();
+                if (SenhaInserida == SenhaValida) {
+                    System.out.println("Senha válida! Pagamento aprovado.");
+                    System.out.println("Ficou no total de: R$ " + ValorFinal);
+
+                } else {
+                    System.out.println("Senha inválida! Pagamento negado.");
+                }
+                break;
+            case 2:
+                System.out.println("Forma de pagamento selecionada: Crédito.");
+                System.out.println("Ficou no total de: R$ " + ValorFinal);
+                break;
+            default:
+                System.out.println("Opção inválida.");
+        }
+
+
+
+    }
+}

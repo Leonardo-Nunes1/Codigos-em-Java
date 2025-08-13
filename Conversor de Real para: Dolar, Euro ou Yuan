@@ -1,0 +1,58 @@
+package teste;
+
+import java.util.Scanner;
+
+public class Teste {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int escolher;
+        double ValorEmReal, ValorEmDolar, ValorEmEuro, ValorEmYuan;
+        double TaxaDolar = 5.40;
+        double TaxaEuro = 6.32;
+        double TaxaYuan = 0.75;
+
+        System.out.println("Conversão de Moedas");
+
+        System.out.println("Converta seu Real para: Dolar, Euro ou Yuan.");
+
+        System.out.println("Primeiro, escolha a moeda que deseja converter:");
+        System.out.println("(1- Dolar, 2- Euro, 3- Yuan (Chinês).");
+        System.out.print("Digite a sua escolha de 1 a 3 -> ");
+        escolher = scanner.nextInt();
+
+        if(escolher < 1 || escolher > 3){
+
+            System.out.println("Escolha não existente, escolha uma opcão de 1 a 3.");
+        }
+
+        System.out.println("Otimo, agora digite o valor em R$ (reais), para a conversão: ");
+        ValorEmReal = scanner.nextDouble();
+
+        switch (escolher){
+
+            case 1:
+                ValorEmDolar = ValorEmReal / TaxaDolar;
+
+                System.out.println("A conversão do dinheiro em Reais (R$) para Dolar (U$), é de: " + ValorEmDolar);
+                break;
+
+            case 2:
+                ValorEmEuro = ValorEmReal / TaxaEuro;
+
+                System.out.println("A conversão do dinheiro em Reais (R$) para Euro (EUR), é de: " + ValorEmEuro);
+                break;
+
+            case 3:
+                ValorEmYuan = ValorEmReal / TaxaYuan;
+
+                System.out.println("A conversão do dinheiro em Reais (R$) para Yuan (CNY), é de: " + ValorEmYuan);
+                break;
+
+            default:
+
+        }
+
+    }
+}

@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Teste1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] produtos = {"Camisa", "Calça", "Tênis", "Boné", "Mochila"};
+        double[] precos = {80.0, 120.0, 200.0, 50.0, 150.0};
+
+        double total = 0;
+        int escolha;
+
+        System.out.println("=== Loja Virtual - Pagamento via Pix ===");
+        System.out.println("Escolha os produtos pelo número (0 para finalizar):");
+
+
+        for (int i = 0; i < produtos.length; i++) {
+            System.out.printf("%d - %s (R$ %.2f)\n", i + 1, produtos[i], precos[i]);
+        }
+
+
+        do {
+            System.out.print("Digite o número do produto (0 para finalizar): ");
+            escolha = sc.nextInt();
+
+            if (escolha > 0 && escolha <= produtos.length) {
+                total += precos[escolha - 1];
+                System.out.println(produtos[escolha - 1] + " adicionado ao carrinho!");
+            } else if (escolha != 0) {
+                System.out.println("Opção inválida, tente novamente!");
+            }
+
+        } while (escolha != 0);
+
+
+        double valorFinal = total;
+        if (total > 150) {
+            double desconto = total * 0.08;
+            valorFinal -= desconto;
+            System.out.printf("\nCompra acima de R$150! Desconto de 8%% aplicado (R$ %.2f).\n", desconto);
+        }
+
+
+        System.out.printf("Total da compra: R$ %.2f\n", total);
+        System.out.printf("Valor final a pagar via Pix: R$ %.2f\n", valorFinal);
+        System.out.println("\nGerando chave Pix: pague.loja@pix.com");
+    }
+}

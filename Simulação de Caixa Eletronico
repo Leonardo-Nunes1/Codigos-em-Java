@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class SimuladorCaixaEletronico {
+
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+
+        String cartao = "2390881165784421";
+        String senha = "4022";
+        double saldo = 1350.98;
+
+        System.out.println("=== = CAIXA ELETRONICO VIRTUAL = ===");
+
+
+        System.out.print("Digite os números do seu cartão: ");
+        String cartaoInput = entrada.nextLine();
+
+        System.out.print("Digite sua senha: ");
+        String senhaInput = entrada.nextLine();
+
+        if (cartaoInput.equals(cartao) && senhaInput.equals(senha)) {
+            System.out.println("Acesso liberado!\n");
+
+            int opcao;
+            do {
+
+                System.out.println("===== MENU =====");
+                System.out.println("1 - Consultar saldo");
+                System.out.println("2 - Sacar");
+                System.out.println("3 - Depositar");
+                System.out.println("4 - Sair");
+                System.out.print("Escolha uma opção: ");
+                opcao = entrada.nextInt();
+
+                switch (opcao) {
+                    case 1:
+                        System.out.println("Seu saldo atual é: R$ " + saldo);
+                        break;
+
+                    case 2:
+                        System.out.print("Digite o valor para saque: ");
+                        double saque = entrada.nextDouble();
+                        if (saque > 0 && saque <= saldo) {
+                            saldo -= saque;
+                            System.out.println("Saque de R$ " + saque + " realizado com sucesso!");
+                            System.out.println("Saldo restante: R$ " + saldo);
+                        } else {
+                            System.out.println("Saldo insuficiente ou valor inválido!");
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print("Digite o valor para depósito: ");
+                        double deposito = entrada.nextDouble();
+                        if (deposito > 0) {
+                            saldo += deposito;
+                            System.out.println("Depósito de R$ " + deposito + " realizado!");
+                            System.out.println("Saldo atualizado: R$ " + saldo);
+                        } else {
+                            System.out.println("Valor inválido para depósito!");
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println("Obrigado por utilizar nosso caixa eletrônico!");
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida! Tente novamente.");
+                }
+
+                System.out.println();
+            } while (opcao != 4);
+
+        } else {
+            System.out.println("Login incorreto, acesso negado.");
+        }
+
+
+    }
+}

@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class EmprestimoLivroSimples {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String livro = "Dom Casmurro";
+        boolean disponivel = true;
+
+        System.out.println("Livro disponível: " + livro);
+
+        System.out.print("Deseja emprestar o livro? (s/n): ");
+        String resposta = sc.nextLine();
+
+        if (resposta.equalsIgnoreCase("s") && disponivel) {
+            disponivel = false;
+            System.out.println("Você emprestou o livro: " + livro);
+        } else {
+            System.out.println("O livro já está emprestado ou você não quis pegar.");
+        }
+
+        System.out.print("Deseja devolver o livro? (s/n): ");
+        resposta = sc.nextLine();
+
+        if (resposta.equalsIgnoreCase("s") && !disponivel) {
+            disponivel = true;
+            System.out.println("Você devolveu o livro: " + livro);
+        } else {
+            System.out.println("Nenhuma devolução feita.");
+        }
+
+       
+    }
+}

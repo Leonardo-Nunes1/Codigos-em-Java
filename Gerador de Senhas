@@ -1,0 +1,54 @@
+import java.security.SecureRandom;
+import java.util.Scanner;
+
+public class GeradorDeSenhas {
+
+
+    private static final String LETRAS_MAIUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LETRAS_MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMEROS = "0123456789";
+    private static final String SIMBOLOS = "!@#$%^&*()-_=+[]{};:,.<>?/";
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SecureRandom random = new SecureRandom();
+
+        System.out.println("===== GERADOR DE SENHAS ALEATÓRIAS =====");
+        System.out.print("Digite o tamanho da senha: ");
+        int tamanho = scanner.nextInt();
+
+        System.out.print("Incluir letras maiúsculas? (s/n): ");
+        boolean usarMaiusculas = scanner.next().equalsIgnoreCase("s");
+
+        System.out.print("Incluir letras minúsculas? (s/n): ");
+        boolean usarMinusculas = scanner.next().equalsIgnoreCase("s");
+
+        System.out.print("Incluir números? (s/n): ");
+        boolean usarNumeros = scanner.next().equalsIgnoreCase("s");
+
+        System.out.print("Incluir símbolos? (s/n): ");
+        boolean usarSimbolos = scanner.next().equalsIgnoreCase("s");
+
+        // Monta o conjunto de caracteres de acordo com as opções
+        String conjunto = "";
+        if (usarMaiusculas) conjunto += LETRAS_MAIUSCULAS;
+        if (usarMinusculas) conjunto += LETRAS_MINUSCULAS;
+        if (usarNumeros) conjunto += NUMEROS;
+        if (usarSimbolos) conjunto += SIMBOLOS;
+
+        if (conjunto.isEmpty()) {
+            System.out.println("Nenhum tipo de caractere selecionado! Encerrando programa.");
+            return;
+        }
+
+        // Gera a senha
+        StringBuilder senha = new StringBuilder();
+        for (int i = 0; i < tamanho; i++) {
+            int index = random.nextInt(conjunto.length());
+            senha.append(conjunto.charAt(index));
+        }
+
+        System.out.println("\nSenha gerada: " + senha);
+        
+    }
+}
